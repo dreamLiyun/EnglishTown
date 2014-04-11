@@ -1,0 +1,22 @@
+/* CSS Document */
+.tableTitle{
+	background:#0066FF;
+	color:#FFFFFF;
+	border: 0;
+}
+
+.tableCell{
+border-bottom:dashed;
+border-bottom-color:#0066FF;
+border-width:1px;
+cursor:hand;
+}
+
+.labelCom{
+color:#000000;
+cursor:pointer;
+}
+.labelSel{
+color:#FF0000;
+cursor:pointer;
+}
