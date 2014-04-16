@@ -13,7 +13,7 @@
 </style>
 </head>
 <%
-dim m_ChapterArry,SQL,num,bexist
+dim m_ChapterArry,SQL,num,bexist,currentchap
 bexist=false
 SQL="Select * from [T_chapter] order by ID Desc"
 Set Rs=Server.CreateObject("ADODB.RecordSet")
@@ -30,11 +30,15 @@ bexist=false
 end if
 Rs.close 
 Set Rs=nothing
+currentchap=m_ChapterArry(0)
+
+function testd
+testd="5555"
+end function
 %>
 <body>
-<center><b>选择章节：</b><select name="ChapterSel"></select></center>
-<div width="80%" align="center" style="background-color:#70FEC9" id="chapdiv">
-
+<center><b>选择章节：</b><select id="ChapterSel" onchange="ChangeWord();"><option value="123123">sds</option></select></center>
+<div width="50%" align="center" style="background-color:#70FEC9" id="chapdiv">
 </div>
 <hr width="80%" align="center"  />
 <form name="AddTestForm" action="TestDeal.asp" method="post">
@@ -45,7 +49,7 @@ Set Rs=nothing
     <th width="51%" align="center">答案</th>
   </tr>
   <tr>
-    <td align="center"><span class="STYLE1">1</span></td>
+    <td align="center"><span class="STYLE1">1</span></td>sss
     <td align="center">
       <input name="Qus1" type="text" id="Qus1" size="50" />    </td>
     <td align="center">
@@ -107,11 +111,43 @@ Set Rs=nothing
 <script type="text/javascript">
 <%for ii=0 to num-1%>
 var oOption = document.createElement("OPTION");
-ChapterSel.options.add(oOption);
+document.all.ChapterSel.options.add(oOption);
 oOption.innerText = "<%=m_ChapterArry(ii)%>";
 oOption.value = "<%=m_ChapterArry(ii)%>";
 <%next%>
 str=("<%=bexist%>")
+
+
+<%
+  str="<table align='center' width='50%' border=1 ><tr><td>序号</td><td>单词</td><td>释义</td></tr>"
+  lindex=0
+  SQL="select Word,Meaning from [T_Word] where Chapter="&currentchap
+  set rs=server.CreateObject("ADODB.Recordset")
+  rs.open SQL,conn,3,2
+  do while not (rs.eof or rs.bof)
+  lindex=lindex+1
+  str=str&"<tr><td>"&lindex&"</td><td>"&rs("word")&"</td><td>"&rs("Meaning")&"</td></tr>"
+  
+  rs.movenext
+  loop
+  str=str&"</table>"
+%>
 if(str=="False")
-document.all.chapdiv.innerHTML="<table align='center' width='80%'><tr align='center'><td>无记录</td></tr></table> "
+document.all.chapdiv.innerHTML="<table align='center' width='50%'><tr align='center'><td>无记录</td></tr></table> ";
+else
+document.all.chapdiv.innerHTML="<%=str%>"
+
+
+function ChangeWord()
+{
+var osel=document.all.ChapterSel;
+//ind=osel.selectedIndex;alert(ind);
+<%
+ose=document.all.ChapterSel
+ose.selectedIndex
+%>
+str=testd();
+alert(str);
+//alert(osel.options[osel.selectedIndex].value);	
+}
 </script>
