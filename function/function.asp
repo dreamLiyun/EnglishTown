@@ -206,7 +206,16 @@ function Message(str)
 response.Write("<script language='javascript'>alert('"&str&"');</script>")
 end function
 
-
+function Record_Count(Res)
+dim num
+num=0
+do while not Res.eof
+num=num+1
+Res.movenext
+loop
+Res.movefirst
+Record_Count=num
+end function
 %>
 
 <script language="javascript">
