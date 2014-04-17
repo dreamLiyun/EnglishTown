@@ -73,7 +73,7 @@ function showHide(obj,objimg)
     <td align='right'>
         <table cellpadding=0 cellspacing=0 align="center">
           <tr>
-            <td ><a href="addword.asp" target="adminmain"><img src="../Image/join.gif" align="absbottom" border="0" />试题发布</a></td>
+            <td ><a href="addtest.asp" target="adminmain"><img src="../Image/join.gif" align="absbottom" border="0" />试题发布</a></td>
           </tr>
 		  <tr>
             <td ><a href="user_Add.asp" target="adminmain"><img src="../Image/joinbottom.gif" align="absbottom" border="0" />试题批改</a></td>

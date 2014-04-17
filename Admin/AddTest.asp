@@ -30,11 +30,16 @@ bexist=false
 end if
 Rs.close 
 Set Rs=nothing
+<<<<<<< .mine
+currentchap=m_ChapterArry(0)
+
+=======
 currentchap=m_ChapterArry(0)
 
 function testd
 testd="5555"
 end function
+>>>>>>> .r5
 %>
 <body>
 <center><b>ักิ๑ียฝฺฃบ</b><select id="ChapterSel" onchange="ChangeWord();"><option value="123123">sds</option></select></center>
