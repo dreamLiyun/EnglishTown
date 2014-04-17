@@ -30,23 +30,57 @@ bexist=false
 end if
 Rs.close 
 Set Rs=nothing
-<<<<<<< .mine
+
 currentchap=m_ChapterArry(0)
 
-=======
-currentchap=m_ChapterArry(0)
 
-function testd
-testd="5555"
-end function
->>>>>>> .r5
+class MyDataSt
+dim Word(10)
+dim Meaning(10)
+
+ private sub class_initialize() 
+       'Word =array(10) 
+       'Meaning =array(10) 
+    end sub 
+
+ public sub pWord(id,w) 
+        Word(id) = w 
+    end sub
+	
+	 public sub  pMeaning(id,m) 
+        Meaning(id) = m 
+    end sub 
+	
+	 public Function gWord(id) 
+        gWord = Word(id) 
+    end Function 
+
+public Function gMeaning(id) 
+        gMeaning = Meaning(id)
+  end   Function
+  
+  private sub class_terminate() 
+        set Word = nothing 
+        set Meaning = nothing 
+    end sub 
+end class
+
+
+set dt=new MyDataSt
+call dt.pWord(0,"Hell") 
+call dt.pMeaning (0,"sdsd")
+call dt.pWord(1,"1") 
+call dt.pMeaning (1,"1")
+response.Write dt.gWord (1)+"sdsd"
+
+
 %>
 <body>
 <center><b>Ñ¡ÔñÕÂ½Ú£º</b><select id="ChapterSel" onchange="ChangeWord();"><option value="123123">sds</option></select></center>
 <div width="50%" align="center" style="background-color:#70FEC9" id="chapdiv">
 </div>
 <hr width="80%" align="center"  />
-<form name="AddTestForm" action="TestDeal.asp" method="post">
+<form name="AddTestForm" action="" method="post">
 <table width="80%" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" id="testtable">
   <tr bgcolor="#66FFFF">
     <th width="4%" align="center">ID</th>
@@ -114,6 +148,7 @@ end function
 </body>
 </html>
 <script type="text/javascript">
+alert("<%=dt.gWord(1)%>"+"<%=dt.gMeaning(1)%> ");
 <%for ii=0 to num-1%>
 var oOption = document.createElement("OPTION");
 document.all.ChapterSel.options.add(oOption);
